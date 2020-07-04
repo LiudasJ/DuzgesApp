@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5db77d51c5.js" crossorigin="anonymous"></script>
+    <title>Renginių planuotojas</title>
+</head>
+<body>
+   <header>
+        <h1>
+            <i class="fab fa-forumbee"></i>&nbsp;
+           <span class="heading">Dūzgės sodyba</span><br>
+           <span>Renginio planuotojas</span>
+        </h1>
+   </header>
+   <main>
+        <div class="form-title">
+            <p>Užpildykite organizuojamos šventės žurnalą</p>
+        </div>
+       <form>
+           <div class="left-form-side">
+                <div class="form-element">
+                    <p>Svečio kontaktinė informacija:</p>
+                    <div class="guest-contact-container">
+                        <div class="form-subelement">
+                            <label for="fname">Vardas:</label><br>
+                            <input type="text" id="fname" name="fname">
+                        </div>
+                        <div class="form-subelement">
+                            <label for="tel">Telefono nr:</label><br>
+                            <input type="text" id="tel" name="tel">
+                        </div>
+                        <div class="form-subelement">
+                            <label for="place">Gyvenamoji vieta:</label><br>
+                            <input type="text" id="place" name="place">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <label for="event">Pasirinkite šventę:</label><br>
+                    <select id="select">
+                        <option value="vestuvės">Vestuvės</option>
+                        <option value="krikštynos">Krikštynos</option>
+                        <option value="jubiliejus">Jubiliejus</option>
+                        <option value="gedulas">Gedulingi pietūs</option>
+                        <option value="metinės">Metinės</option>
+                        <option value="kita">Kita</option>
+                    </select>
+                </div>
+                <div class="form-element flex">
+                    <div class="form-subelement flex">
+                        <div class="flex-column event-time">
+                            <label for="date-start">Šventės pradžia:</label>
+                            <input type="date" id="date-start" name="date-start">
+                        </div>
+                        <div class="flex-column">
+                            <label for="date-end">Šventės pabaiga:</label>                       
+                            <input type="date" id="date-end" name="date-end">
+                        </div>    
+                    </div>
+                    <!-- <div class="form-subelement">
+                        <label for="arrival">Svečiai renkasi:</label><br>
+                        <input type="text" id="arrival" name="arrival">
+                    </div> -->
+                </div>
+                <div class="form-element">
+                    <div class="form-subelement">
+                        <label for="guest-amount">Svečių skaičius:</label><br>
+                        <input type="text" id="guest-amount" name="guest-amount">
+                    </div>
+                </div>
+            </div>
+            <div class="right-form-side">
+                <div class="form-element">
+                    <input type="checkbox" id="food" name="food">
+                    <label for="food">Maitinimas</label>
+                    <div id="optional-food-order">
+                        <div class="form-subelement">
+                            <input type="checkbox" name="main-beer-breakfast"> 
+                            <label for="main-beer-breakfast">1 karštas, alaus stalas ir pusryčiai</label>
+                        </div>
+                        <div class="form-subelement">
+                            <input type="checkbox" name="doublemain-beer-breakfast">
+                            <label for="doublemain-beer-breakfast">2 karšti, alaus stalas ir pusryčiai</label>
+                        </div>
+                        <div class="form-subelement">
+                            <input type="checkbox" name="main-beer">
+                            <label for="main-beer">1 karštas ir alaus stalas</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="accommodation" name="accommodation">
+                    <label for="accommodation">Apgyvendinimas</label>
+                    <div id="optional-accommodation">
+                        <div class="form-subelement">
+                            <label for="sleep">Žmonių skaičius:</label>
+                            <input type="text" id="sleep" name="sleep"> 
+                        </div>
+                    </div>
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="bathtube" name="bathtube">
+                    <label for="bathtube">Kubilas</label>
+                </div>
+                <div class="form-element flex-column">
+                    <label for="comments">Pastabos, pageidavimai:</label>
+                    <textarea cols="10" rows="10" placeholder="Papuošimai, atvykimo/išvykimo laikai, kubilo kūrimo laikas..."></textarea>
+                </div>
+            </div>
+       </form>
+       <button id="save">Save</button>
+       <script src="main.js"></script>
+   </main> 
+</body>
+</html>
