@@ -74,12 +74,12 @@
                 </div>
                 <div class="form-element flex-column">
                     <label for="comments">Pastabos, pageidavimai:</label>
-                    <textarea cols="10" rows="10" placeholder="Salės stalų išplanavimas, pageidavimai miegamiesiems kambariams, kubilo kūrimo laikas..."></textarea>
+                    <textarea id="notes" cols="10" rows="10" placeholder="Salės stalų išplanavimas, pageidavimai miegamiesiems kambariams, kubilo kūrimo laikas..."></textarea>
                 </div>
             </div>
             <div class="right-form-side">
                 <div class="form-element">
-                    <input type="checkbox" id="food" name="food">
+                    <input type="checkbox" id="food" class="additional-service-checkbox" name="food">
                     <label for="food">Maitinimas</label>
                     <div id="optional-food-order" class="optional-service">
                         <div class="form-subelement">
@@ -105,7 +105,7 @@
                     </div>
                 </div>
                 <div class="form-element">
-                    <input type="checkbox" id="accommodation" name="accommodation">
+                    <input type="checkbox" id="accommodation" class="additional-service-checkbox" name="accommodation">
                     <label for="accommodation">Apgyvendinimas</label>
                     <div id="optional-accommodation" class="optional-service">
                         <div class="form-subelement">
@@ -127,19 +127,19 @@
        </form>
        <button id="save">Save</button>
        <button id="fetchInputsWithData">Redaguoti</button>
-       <div class="saved-event-table">
-           <table id="table">
-                <tr>
-                    <th>Klientas:</th>
-                    <th>Tel.Nr:</th>
-                    <th>Gyvenamoji vieta:</th>
-                    <th>Renginys:</th>
-                    <th>Žmonių skaičius:</th>
-                    <th>Renginio pradžia:</th>
-                    <th>Renginio pabaiga:</th>
-                </tr>
-           </table>
-       </div>
+       <table id="table">
+            <tr>
+                <th>Klientas:</th>
+                <th>Tel.Nr:</th>
+                <th>Gyvenamoji vieta:</th>
+                <th>Renginys:</th>
+                <th>Žmonių skaičius:</th>
+                <th>Renginio pradžia:</th>
+                <th>Renginio pabaiga:</th>
+                <th>Dalyviai renkasi:</th>
+                <th>Pastabos:</th>
+            </tr>
+        </table>
        <script src="main.js"></script>
    </main> 
 </body>

@@ -10,13 +10,20 @@ th, td {
     padding: 10px;
     text-align: center;
 }
+tr {
+    margin-bottom: 100px;
+    border-bottom: 1px solid coral;
+}
+textarea {
+    text-align: justify;
+}
 .active {
     display: block;
 }
-main {
+/* main {
     max-width: 1200px;
     margin: auto;
-}
+} */
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -108,4 +115,7 @@ textarea {
     align-items: center;
     font-size: 30px;
     color: coral;
+}
+#table {
+    display: none;
 }

@@ -7,6 +7,12 @@ const saveFormButton = document.getElementById('save');
 const eventSelection = document.getElementById('event-selection');
 const table = document.getElementById('table');
 const fetchButton = document.getElementById('fetchInputsWithData');
+const additionalServiceCheckbox = document.getElementsByClassName('additional-service-checkbox')
+const optionalServiceContainer = document.getElementsByClassName('optional-service');
+const foodInput = document.getElementsByClassName('food-input');
+const amountOfSleepingGuests = document.getElementById('sleep');
+const guestArrival = document.getElementById('arrival');
+const notes = document.getElementById('notes');
 
 const date = new Date();
 monthContainer.innerHTML = months[date.getMonth()];
@@ -23,6 +29,27 @@ eventSelection.addEventListener('mouseleave', ()=>{
     }
 })
 
+function unhideAdditionalServices(container) {
+    container.style.display = 'block';
+}
+
+for (let i = 0; i < 2; i++) {
+    let index = i;
+    additionalServiceCheckbox[index].addEventListener('change', (event) => {
+        if (index != 1) {
+            for (j = 0; j<foodInput.length; j++) {
+                foodInput[j].checked = false;
+            } 
+        } else {
+            amountOfSleepingGuests.value = '';
+        }
+        if (event.target.checked) {
+            optionalServiceContainer[index].style.display = "block";
+        } else {
+            optionalServiceContainer[index].style.display = 'none';
+        }
+    })
+}
 /* Customer data variables */
 const customerName = document.getElementById('name');
 const customerNumber = document.getElementById('tel');
@@ -39,44 +66,45 @@ const eventEndDate = document.getElementById('event-end-date');
 
 class Customer {
     constructor(name, tel, place){
-        this.vardas = name;
-        this.telNr = tel;
-        this.gyvenamojiVieta = place;
+        this.name = name;
+        this.tel = tel;
+        this.place = place;
     }
 };
 
 class Services {
-    constructor(food, acco, bathtube){
-        this.maistas = food;
-        this.apgyvendinimas = acco;
-        this.kubilas = bathtube;
-    }
+
 }
 
 class Event extends Customer {
-    constructor(name, tel, place, event, amountOfGuests, eventStart, eventEnd){
+    constructor(name, tel, place, event, amountOfGuests, eventStart, eventEnd, guestArrival, notes){
         super(name, tel, place);
-        this.renginys = event;
-        this.sveciuSkaicius = amountOfGuests;
-        this.renginioPradzia = eventStart;
-        this.renginioPabaiga = eventEnd;
+        this.event = event;
+        this.amountOfGuests = amountOfGuests;
+        this.eventStart = eventStart;
+        this.eventEnd = eventEnd;
+        this.guestArrival = guestArrival;
+        this.notes = notes;
     }
     addSummaryToUI(){
          const row = document.createElement('tr');
          row.innerHTML = `
-         <td>${this.vardas}</td>
-         <td>${this.telNr}</td>
-         <td>${this.gyvenamojiVieta}</td>
-         <td>${this.renginys}</td>
-         <td>${this.sveciuSkaicius}</td>
-         <td>${this.renginioPradzia}</td>
-         <td>${this.renginioPabaiga}</td>
+         <td>${this.name}</td>
+         <td>${this.tel}</td>
+         <td>${this.place}</td>
+         <td>${this.event}</td>
+         <td>${this.amountOfGuests}</td>
+         <td>${this.eventStart}</td>
+         <td>${this.eventEnd}</td>
+         <td>${this.guestArrival}</td>
+         <td>${this.notes}</td>
          `
          table.appendChild(row);
     }
 }
 saveFormButton.addEventListener('click', ()=>{
-    const formData = new Event(customerName.value, customerNumber.value, customerPlace.value, selectedEvent.value, amountOfGuests.value, eventStartDate.value, eventEndDate.value);
+    const formData = new Event(customerName.value, customerNumber.value, customerPlace.value, selectedEvent.value, amountOfGuests.value, eventStartDate.value, eventEndDate.value, guestArrival.value, notes.value);
+    table.style.display = 'block';
     formData.addSummaryToUI();
     document.getElementById("form").reset();
     }
