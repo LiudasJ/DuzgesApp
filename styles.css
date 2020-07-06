@@ -6,6 +6,17 @@ body {
     width: 90%;
     margin: 20px auto;
 }
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+.active {
+    display: block;
+}
+main {
+    max-width: 1200px;
+    margin: auto;
+}
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -43,7 +54,12 @@ form {
     width: 30%;
 }
 .form-element {
+    height: auto;
     padding: 20px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    transition: all 2s;
 }
 .form-subelement {
     margin-right: 20px;
@@ -53,6 +69,9 @@ form {
 }
 .guest-contact-container {
     display: flex;
+}
+.event {
+    margin-right: 30px;
 }
 select {
     height: 30px;
@@ -67,8 +86,26 @@ option {
     background-color: #e2e2e2;
 }
 #optional-food-order, #optional-accommodation {
+    margin-top: 15px;
     display: none;
 }
 textarea {
     margin-top: 15px;
+}
+.calendar {
+    height: 300px;
+}
+#month-container, #weekday-container {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#day-container {
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: coral;
 }

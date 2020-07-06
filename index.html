@@ -20,14 +20,14 @@
         <div class="form-title">
             <p>Užpildykite organizuojamos šventės žurnalą</p>
         </div>
-       <form>
+       <form id="form">
            <div class="left-form-side">
                 <div class="form-element">
                     <p>Svečio kontaktinė informacija:</p>
                     <div class="guest-contact-container">
                         <div class="form-subelement">
-                            <label for="fname">Vardas:</label><br>
-                            <input type="text" id="fname" name="fname">
+                            <label for="name">Vardas:</label><br>
+                            <input type="text" id="name" name="name">
                         </div>
                         <div class="form-subelement">
                             <label for="tel">Telefono nr:</label><br>
@@ -39,66 +39,78 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-element">
-                    <label for="event">Pasirinkite šventę:</label><br>
-                    <select id="select">
-                        <option value="vestuvės">Vestuvės</option>
-                        <option value="krikštynos">Krikštynos</option>
-                        <option value="jubiliejus">Jubiliejus</option>
-                        <option value="gedulas">Gedulingi pietūs</option>
-                        <option value="metinės">Metinės</option>
-                        <option value="kita">Kita</option>
-                    </select>
+                <div class="form-element flex">
+                    <div class="event">
+                        <label for="event">Pasirinkite renginį:</label><br>
+                        <select id="event-selection">
+                            <option value="Vestuvės">Vestuvės</option>
+                            <option value="Krikštynos">Krikštynos</option>
+                            <option value="Jubiliejus">Jubiliejus</option>
+                            <option value="Gedulingi pietūs/Metinės">Gedulingi pietūs/Metinės</option>
+                            <option value="Nakvynė/Viešnagė">Nakvynė/Viešnagė</option>
+                            <option value="Kita">Kita</option>
+                        </select>
+                    </div>
+                    <div class="form-subelement">
+                        <label for="guest-amount">Žmonių skaičius:</label><br>
+                        <input type="text" id="guest-amount" name="guest-amount">
+                    </div>
                 </div>
                 <div class="form-element flex">
                     <div class="form-subelement flex">
                         <div class="flex-column event-time">
-                            <label for="date-start">Šventės pradžia:</label>
-                            <input type="date" id="date-start" name="date-start">
+                            <label id="event-start-label" for="date-start">Renginio pradžia:</label>
+                            <input type="date" id="event-start-date" name="date-start">
                         </div>
                         <div class="flex-column">
-                            <label for="date-end">Šventės pabaiga:</label>                       
-                            <input type="date" id="date-end" name="date-end">
+                            <label id="event-end-label" for="date-end">Renginio pabaiga:</label>                       
+                            <input type="date" id="event-end-date" name="date-end">
                         </div>    
                     </div>
-                    <!-- <div class="form-subelement">
-                        <label for="arrival">Svečiai renkasi:</label><br>
-                        <input type="text" id="arrival" name="arrival">
-                    </div> -->
-                </div>
-                <div class="form-element">
                     <div class="form-subelement">
-                        <label for="guest-amount">Svečių skaičius:</label><br>
-                        <input type="text" id="guest-amount" name="guest-amount">
+                        <label for="arrival">Atvykimo laikas:</label><br>
+                        <input type="text" id="arrival" name="arrival">
                     </div>
+                </div>
+                <div class="form-element flex-column">
+                    <label for="comments">Pastabos, pageidavimai:</label>
+                    <textarea cols="10" rows="10" placeholder="Salės stalų išplanavimas, pageidavimai miegamiesiems kambariams, kubilo kūrimo laikas..."></textarea>
                 </div>
             </div>
             <div class="right-form-side">
                 <div class="form-element">
                     <input type="checkbox" id="food" name="food">
                     <label for="food">Maitinimas</label>
-                    <div id="optional-food-order">
+                    <div id="optional-food-order" class="optional-service">
                         <div class="form-subelement">
-                            <input type="checkbox" name="main-beer-breakfast"> 
+                            <input type="radio" name="foodOption" class="food-input"> 
+                            <label for="main-breakfast">1 karštas ir pusryčiai</label>
+                        </div>
+                        <div class="form-subelement">
+                            <input type="radio" name="foodOption" class="food-input"> 
                             <label for="main-beer-breakfast">1 karštas, alaus stalas ir pusryčiai</label>
                         </div>
                         <div class="form-subelement">
-                            <input type="checkbox" name="doublemain-beer-breakfast">
+                            <input type="radio" name="foodOption" class="food-input">
                             <label for="doublemain-beer-breakfast">2 karšti, alaus stalas ir pusryčiai</label>
                         </div>
                         <div class="form-subelement">
-                            <input type="checkbox" name="main-beer">
+                            <input type="radio" name="foodOption" class="food-input">
                             <label for="main-beer">1 karštas ir alaus stalas</label>
+                        </div>
+                        <div class="form-subelement">
+                            <input type="radio" name="foodOption" class="food-input">
+                            <label for="funeral-food-option">Gedulingų pietų meniu</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-element">
                     <input type="checkbox" id="accommodation" name="accommodation">
                     <label for="accommodation">Apgyvendinimas</label>
-                    <div id="optional-accommodation">
+                    <div id="optional-accommodation" class="optional-service">
                         <div class="form-subelement">
                             <label for="sleep">Žmonių skaičius:</label>
-                            <input type="text" id="sleep" name="sleep"> 
+                            <input type="text" id="sleep" name="sleep" class="sleep-input"> 
                         </div>
                     </div>
                 </div>
@@ -106,13 +118,28 @@
                     <input type="checkbox" id="bathtube" name="bathtube">
                     <label for="bathtube">Kubilas</label>
                 </div>
-                <div class="form-element flex-column">
-                    <label for="comments">Pastabos, pageidavimai:</label>
-                    <textarea cols="10" rows="10" placeholder="Papuošimai, atvykimo/išvykimo laikai, kubilo kūrimo laikas..."></textarea>
+                <div class="form-element calendar">
+                    <div id="month-container" class="calendar-section"></div>
+                    <div id="day-container" class="calendar-section"></div>
+                    <div id="weekday-container" class="calendar-section"></div>
                 </div>
             </div>
        </form>
        <button id="save">Save</button>
+       <button id="fetchInputsWithData">Redaguoti</button>
+       <div class="saved-event-table">
+           <table id="table">
+                <tr>
+                    <th>Klientas:</th>
+                    <th>Tel.Nr:</th>
+                    <th>Gyvenamoji vieta:</th>
+                    <th>Renginys:</th>
+                    <th>Žmonių skaičius:</th>
+                    <th>Renginio pradžia:</th>
+                    <th>Renginio pabaiga:</th>
+                </tr>
+           </table>
+       </div>
        <script src="main.js"></script>
    </main> 
 </body>
