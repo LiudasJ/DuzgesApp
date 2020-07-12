@@ -20,10 +20,25 @@ textarea {
 .active {
     display: block;
 }
-/* main {
-    max-width: 1200px;
+.btn {
+    padding: 5px;
+    height: 35px;
+    width: 100px;
+    color: white;
+    text-transform: uppercase;
+}
+.btn-save {
+    border: 1px solid green;
+    background:#84c614;
+}
+.btn-edit {
+    border: 1px solid #c6ac1c;
+    background: #ecd13f;
+}
+main {
+    max-width: 1400px;
     margin: auto;
-} */
+}
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -56,6 +71,7 @@ form {
 }
 .left-form-side {
     width: 70%;
+    margin-right: 10px;
 }
 .right-form-side {
     width: 30%;
@@ -65,7 +81,7 @@ form {
     padding: 20px;
     border: 1px solid grey;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 0;
     transition: all 2s;
 }
 .form-subelement {

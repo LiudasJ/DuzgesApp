@@ -20,8 +20,9 @@
         <div class="form-title">
             <p>Užpildykite organizuojamos šventės žurnalą</p>
         </div>
-       <form id="form">
+       <form id="form" action="form.php" method="POST">
            <div class="left-form-side">
+                <h2>Pagrindinė informacija:</h2>
                 <div class="form-element">
                     <p>Svečio kontaktinė informacija:</p>
                     <div class="guest-contact-container">
@@ -76,35 +77,37 @@
                     <label for="comments">Pastabos, pageidavimai:</label>
                     <textarea id="notes" cols="10" rows="10" placeholder="Salės stalų išplanavimas, pageidavimai miegamiesiems kambariams, kubilo kūrimo laikas..."></textarea>
                 </div>
+                <input type="submit" id="save" class="btn btn-save" value="Išsaugoti">
             </div>
             <div class="right-form-side">
+                <h2>Paslaugos:</h2>
                 <div class="form-element">
                     <input type="checkbox" id="food" class="additional-service-checkbox" name="food">
                     <label for="food">Maitinimas</label>
                     <div id="optional-food-order" class="optional-service">
                         <div class="form-subelement">
-                            <input type="radio" name="foodOption" class="food-input"> 
+                            <input type="radio" name="foodOption" class="food-input" value="1 karštas ir pusryčiai"> 
                             <label for="main-breakfast">1 karštas ir pusryčiai</label>
                         </div>
                         <div class="form-subelement">
-                            <input type="radio" name="foodOption" class="food-input"> 
+                            <input type="radio" name="foodOption" class="food-input" value="1 karštas, alaus stalas ir pusryčiai"> 
                             <label for="main-beer-breakfast">1 karštas, alaus stalas ir pusryčiai</label>
                         </div>
                         <div class="form-subelement">
-                            <input type="radio" name="foodOption" class="food-input">
+                            <input type="radio" name="foodOption" class="food-input" value="2 karšti, alaus stalas ir pusryčiai">
                             <label for="doublemain-beer-breakfast">2 karšti, alaus stalas ir pusryčiai</label>
                         </div>
                         <div class="form-subelement">
-                            <input type="radio" name="foodOption" class="food-input">
+                            <input type="radio" name="foodOption" class="food-input" value="1 karštas ir alaus stalas">
                             <label for="main-beer">1 karštas ir alaus stalas</label>
                         </div>
                         <div class="form-subelement">
-                            <input type="radio" name="foodOption" class="food-input">
+                            <input type="radio" name="foodOption" class="food-input" value="Gedulingų pietų meniu">
                             <label for="funeral-food-option">Gedulingų pietų meniu</label>
                         </div>
                     </div>
                 </div>
-                <div class="form-element">
+                <div class="form-element accoDiv">
                     <input type="checkbox" id="accommodation" class="additional-service-checkbox" name="accommodation">
                     <label for="accommodation">Apgyvendinimas</label>
                     <div id="optional-accommodation" class="optional-service">
@@ -125,8 +128,6 @@
                 </div>
             </div>
        </form>
-       <button id="save">Save</button>
-       <button id="fetchInputsWithData">Redaguoti</button>
        <table id="table">
             <tr>
                 <th>Klientas:</th>

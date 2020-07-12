@@ -2,36 +2,34 @@ const monthContainer = document.getElementById('month-container');
 const dayContainer = document.getElementById('day-container');
 const weekdayContainer = document.getElementById('weekday-container');
 const months = ["Sausio", "Vasario", "Kovo", "Balandžio", "Gegužės", "Birželio", "Liepos", "Rugpjūčio", "Rugsėjo", "Spalio", "Lapkričio", "Gruodžio"];
-const weekday = ["Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis", "Sekmadienis"];
+const weekday = ["Sekmadienis", "Pirmadienis", "Antradienis", "Trečiadienis", "Ketvirtadienis", "Penktadienis", "Šeštadienis"];
 const saveFormButton = document.getElementById('save');
 const eventSelection = document.getElementById('event-selection');
 const table = document.getElementById('table');
-const fetchButton = document.getElementById('fetchInputsWithData');
 const additionalServiceCheckbox = document.getElementsByClassName('additional-service-checkbox')
 const optionalServiceContainer = document.getElementsByClassName('optional-service');
 const foodInput = document.getElementsByClassName('food-input');
 const amountOfSleepingGuests = document.getElementById('sleep');
 const guestArrival = document.getElementById('arrival');
 const notes = document.getElementById('notes');
+var   food, acco, bathtube;
+var accoDiv = document.getElementsByClassName('accoDiv');
 
 const date = new Date();
 monthContainer.innerHTML = months[date.getMonth()];
 dayContainer.innerText = date.getDate();
-weekdayContainer.innerText = weekday[date.getDay()-1];
-
+weekdayContainer.innerText = weekday[date.getDay()];
 eventSelection.addEventListener('mouseleave', ()=>{
     if(eventSelection.value == 'Nakvynė/Viešnagė') {
         document.getElementById('event-start-label').innerText = "Įsiregistravimo data:";
         document.getElementById('event-end-label').innerText = "Išsiregistravimo data:";
+        accoDiv[0].style.display = 'none';
     } else {
         document.getElementById('event-start-label').innerText = "Renginio pradžia:";
         document.getElementById('event-end-label').innerText = "Renginio pabaiga:";
+        accoDiv[0].style.display = 'block';
     }
 })
-
-function unhideAdditionalServices(container) {
-    container.style.display = 'block';
-}
 
 for (let i = 0; i < 2; i++) {
     let index = i;
@@ -63,6 +61,9 @@ const eventStartDate = document.getElementById('event-start-date');
 const eventEndDate = document.getElementById('event-end-date');
 
 /* Additional Services variables */
+food = document.getElementById('food');
+acco = document.getElementById('accommodation');
+bathtube = document.getElementById('bathtube');
 
 class Customer {
     constructor(name, tel, place){
@@ -70,11 +71,10 @@ class Customer {
         this.tel = tel;
         this.place = place;
     }
+    getCustomerInfo () {
+        return `Renginį užsakė: ${this.name} iš ${this.place}. Asmens kontaktinis numeris: ${this.tel}.`
+    }
 };
-
-class Services {
-
-}
 
 class Event extends Customer {
     constructor(name, tel, place, event, amountOfGuests, eventStart, eventEnd, guestArrival, notes){
@@ -85,6 +85,23 @@ class Event extends Customer {
         this.eventEnd = eventEnd;
         this.guestArrival = guestArrival;
         this.notes = notes;
+    }
+    getAdditionalServices () {
+        var output = {}; 
+        if (food.checked) {
+            for (let i = 0; i < foodInput.length; i++) {
+                if (foodInput[i].checked) {
+                   output.dishes = `${foodInput[i].value}`;
+                }
+            }
+        }
+        if (acco.checked) {
+            output.amountOfSleepingGuests = `${amountOfSleepingGuests.value}`;
+        }
+        if (bathtube.checked) {
+            output.bathtube = "yes";
+        }
+        return output;
     }
     addSummaryToUI(){
          const row = document.createElement('tr');
@@ -102,18 +119,13 @@ class Event extends Customer {
          table.appendChild(row);
     }
 }
-saveFormButton.addEventListener('click', ()=>{
+saveFormButton.addEventListener('click', (e)=>{
+    e.preventDefault();
     const formData = new Event(customerName.value, customerNumber.value, customerPlace.value, selectedEvent.value, amountOfGuests.value, eventStartDate.value, eventEndDate.value, guestArrival.value, notes.value);
     table.style.display = 'block';
     formData.addSummaryToUI();
+    const allData = Object.assign({}, formData, formData.getAdditionalServices());
+    console.log(allData);
     document.getElementById("form").reset();
     }
 )
-
-fetchButton.addEventListener('click', ()=>{
-    for(let i = 1; i < table.rows.length; i++) {
-        for(let j = 0; j < table.rows[i].children.length; j++) {
-            console.log(table.rows[i].children[j].innerText);
-        }
-    }
-})
