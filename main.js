@@ -19,6 +19,7 @@ const date = new Date();
 monthContainer.innerHTML = months[date.getMonth()];
 dayContainer.innerText = date.getDate();
 weekdayContainer.innerText = weekday[date.getDay()];
+
 eventSelection.addEventListener('mouseleave', ()=>{
     if(eventSelection.value == 'Nakvynė/Viešnagė') {
         document.getElementById('event-start-label').innerText = "Įsiregistravimo data:";
@@ -48,6 +49,26 @@ for (let i = 0; i < 2; i++) {
         }
     })
 }
+
+notes.addEventListener('keyup', ()=>{
+    var contentLength = notes.value.length;
+    var progressBarLimit = document.getElementsByClassName('progress-bar-limit');
+    var progressBar = document.getElementsByClassName('progress-bar');
+    var percentOfProgress;
+
+    progressBarLimit[0].innerHTML = `${contentLength} | 300`;
+
+    percentOfProgress = contentLength * 100 / 300;
+
+    if (percentOfProgress > 100) {
+        progressBar[0].style.width = '100%';
+        saveFormButton.disabled = true;    
+    } else {
+        progressBar[0].style.width = `${percentOfProgress}%`
+        saveFormButton.disabled = false;
+    }
+    
+});
 /* Customer data variables */
 const customerName = document.getElementById('name');
 const customerNumber = document.getElementById('tel');
@@ -119,13 +140,12 @@ class Event extends Customer {
          table.appendChild(row);
     }
 }
-saveFormButton.addEventListener('click', (e)=>{
-    e.preventDefault();
-    const formData = new Event(customerName.value, customerNumber.value, customerPlace.value, selectedEvent.value, amountOfGuests.value, eventStartDate.value, eventEndDate.value, guestArrival.value, notes.value);
-    table.style.display = 'block';
-    formData.addSummaryToUI();
-    const allData = Object.assign({}, formData, formData.getAdditionalServices());
-    console.log(allData);
-    document.getElementById("form").reset();
-    }
-)
+// saveFormButton.addEventListener('click', ()=>{
+//     // e.preventDefault();
+//     const formData = new Event(customerName.value, customerNumber.value, customerPlace.value, selectedEvent.value, amountOfGuests.value, eventStartDate.value, eventEndDate.value, guestArrival.value, notes.value);
+//     const allData = Object.assign({}, formData, formData.getAdditionalServices());
+//     console.log(allData);
+//     document.getElementById("form").reset();
+//     }
+// )
+  

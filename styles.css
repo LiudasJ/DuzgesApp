@@ -135,3 +135,18 @@ textarea {
 #table {
     display: none;
 }
+.progress-bar-container {
+    position: relative;
+    margin: 10px 0;
+    height: 10px;
+    background-color: red;
+    border-radius: 5px;
+}
+.progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    border-radius: 4px;
+    background-color: yellowgreen;
+}

@@ -20,7 +20,7 @@
         <div class="form-title">
             <p>Užpildykite organizuojamos šventės žurnalą</p>
         </div>
-       <form id="form" action="form.php" method="POST">
+       <form id="form" method="post" action="form.php">
            <div class="left-form-side">
                 <h2>Pagrindinė informacija:</h2>
                 <div class="form-element">
@@ -28,7 +28,7 @@
                     <div class="guest-contact-container">
                         <div class="form-subelement">
                             <label for="name">Vardas:</label><br>
-                            <input type="text" id="name" name="name">
+                            <input type="text" id="name" name="fname">
                         </div>
                         <div class="form-subelement">
                             <label for="tel">Telefono nr:</label><br>
@@ -43,7 +43,7 @@
                 <div class="form-element flex">
                     <div class="event">
                         <label for="event">Pasirinkite renginį:</label><br>
-                        <select id="event-selection">
+                        <select id="event-selection" name="event">
                             <option value="Vestuvės">Vestuvės</option>
                             <option value="Krikštynos">Krikštynos</option>
                             <option value="Jubiliejus">Jubiliejus</option>
@@ -54,18 +54,18 @@
                     </div>
                     <div class="form-subelement">
                         <label for="guest-amount">Žmonių skaičius:</label><br>
-                        <input type="text" id="guest-amount" name="guest-amount">
+                        <input type="text" id="guest-amount" name="guestAmount">
                     </div>
                 </div>
                 <div class="form-element flex">
                     <div class="form-subelement flex">
                         <div class="flex-column event-time">
                             <label id="event-start-label" for="date-start">Renginio pradžia:</label>
-                            <input type="date" id="event-start-date" name="date-start">
+                            <input type="date" id="event-start-date" name="dateStart">
                         </div>
                         <div class="flex-column">
                             <label id="event-end-label" for="date-end">Renginio pabaiga:</label>                       
-                            <input type="date" id="event-end-date" name="date-end">
+                            <input type="date" id="event-end-date" name="dateEnd">
                         </div>    
                     </div>
                     <div class="form-subelement">
@@ -75,9 +75,12 @@
                 </div>
                 <div class="form-element flex-column">
                     <label for="comments">Pastabos, pageidavimai:</label>
-                    <textarea id="notes" cols="10" rows="10" placeholder="Salės stalų išplanavimas, pageidavimai miegamiesiems kambariams, kubilo kūrimo laikas..."></textarea>
+                    <textarea id="notes" name="notes" cols="10" rows="10" placeholder="Salės stalų išplanavimas, pageidavimai miegamiesiems kambariams, kubilo kūrimo laikas..."></textarea>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <span class="progress-bar-limit">0 | 300 simboliai</span>
                 </div>
-                <input type="submit" id="save" class="btn btn-save" value="Išsaugoti">
             </div>
             <div class="right-form-side">
                 <h2>Paslaugos:</h2>
@@ -126,6 +129,7 @@
                     <div id="day-container" class="calendar-section"></div>
                     <div id="weekday-container" class="calendar-section"></div>
                 </div>
+                <input type="submit" name="submit" id="save" class="btn btn-save" value="Išsaugoti">
             </div>
        </form>
        <table id="table">
