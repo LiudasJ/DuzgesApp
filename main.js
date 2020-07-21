@@ -140,12 +140,19 @@ class Event extends Customer {
          table.appendChild(row);
     }
 }
-// saveFormButton.addEventListener('click', ()=>{
-//     // e.preventDefault();
-//     const formData = new Event(customerName.value, customerNumber.value, customerPlace.value, selectedEvent.value, amountOfGuests.value, eventStartDate.value, eventEndDate.value, guestArrival.value, notes.value);
-//     const allData = Object.assign({}, formData, formData.getAdditionalServices());
-//     console.log(allData);
-//     document.getElementById("form").reset();
-//     }
-// )
+
+saveFormButton.addEventListener('click', (e)=>{
+    e.preventDefault();
+    const xhr = new XMLHttpRequest();
+    var myForm = document.getElementById('form');
+    var formValues = new FormData(myForm);
+    xhr.open("POST", "form.php", true);
+    xhr.onreadystatechange = function() {
+        if(this.readyState === 4 && this.status === 200) { 
+            document.getElementById("output").innerHTML = this.responseText;
+        }
+    };
+    xhr.send(formValues); 
+    }
+)
   
