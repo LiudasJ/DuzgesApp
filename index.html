@@ -27,15 +27,15 @@
                     <p>Svečio kontaktinė informacija:</p>
                     <div class="guest-contact-container">
                         <div class="form-subelement">
-                            <label for="name">Vardas:</label><br>
+                            <label for="name">Vardas:</label><br><span id="nameError" class="error"></span>
                             <input type="text" id="name" name="fname">
                         </div>
                         <div class="form-subelement">
-                            <label for="tel">Telefono nr:</label><br>
+                            <label for="tel">Telefono nr:</label><br><span id="telError" class="error"></span>
                             <input type="text" id="tel" name="tel">
                         </div>
                         <div class="form-subelement">
-                            <label for="place">Gyvenamoji vieta:</label><br>
+                            <label for="place">Gyvenamoji vieta:</label><br><span id="placeError" class="error"></span>
                             <input type="text" id="place" name="place">
                         </div>
                     </div>
@@ -54,22 +54,24 @@
                     </div>
                     <div class="form-subelement">
                         <label for="guest-amount">Žmonių skaičius:</label><br>
+                        <div id="guestError" class="error"></div>
                         <input type="text" id="guest-amount" name="guestAmount">
                     </div>
                 </div>
                 <div class="form-element flex">
                     <div class="form-subelement flex">
                         <div class="flex-column event-time">
-                            <label id="event-start-label" for="date-start">Renginio pradžia:</label>
+                            <label id="event-start-label" for="date-start">Renginio pradžia:</label><span id="startError" class="error"></span>
                             <input type="date" id="event-start-date" name="dateStart">
                         </div>
                         <div class="flex-column">
-                            <label id="event-end-label" for="date-end">Renginio pabaiga:</label>                       
+                            <label id="event-end-label" for="date-end">Renginio pabaiga:</label><span id="endError" class="error"></span>                       
                             <input type="date" id="event-end-date" name="dateEnd">
                         </div>    
                     </div>
                     <div class="form-subelement">
                         <label for="arrival">Atvykimo laikas:</label><br>
+                        <div id="arrivalError" class="error"></div>
                         <input type="text" id="arrival" name="arrival">
                     </div>
                 </div>
@@ -116,7 +118,7 @@
                     <div id="optional-accommodation" class="optional-service">
                         <div class="form-subelement">
                             <label for="sleep">Žmonių skaičius:</label>
-                            <input type="text" id="sleep" name="sleep" class="sleep-input"> 
+                            <input type="text" id="sleep" name="sleepingGuests" class="sleep-input"> 
                         </div>
                     </div>
                 </div>

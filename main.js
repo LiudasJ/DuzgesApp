@@ -40,7 +40,7 @@ for (let i = 0; i < 2; i++) {
                 foodInput[j].checked = false;
             } 
         } else {
-            amountOfSleepingGuests.value = '';
+            amountOfSleepingGuests.value = "";
         }
         if (event.target.checked) {
             optionalServiceContainer[index].style.display = "block";
@@ -140,6 +140,14 @@ class Event extends Customer {
          table.appendChild(row);
     }
 }
+// error span variable
+const nameError = document.getElementById('nameError');
+const telError = document.getElementById('telError');
+const placeError = document.getElementById('placeError');
+const guestError = document.getElementById('guestError');
+const arrivalError = document.getElementById('arrivalError');
+const startError = document.getElementById('startError');
+const endError = document.getElementById('endError');
 
 saveFormButton.addEventListener('click', (e)=>{
     e.preventDefault();
@@ -148,8 +156,23 @@ saveFormButton.addEventListener('click', (e)=>{
     var formValues = new FormData(myForm);
     xhr.open("POST", "form.php", true);
     xhr.onreadystatechange = function() {
-        if(this.readyState === 4 && this.status === 200) { 
-            document.getElementById("output").innerHTML = this.responseText;
+        if(this.readyState === 4 && this.status === 200) {
+            const responseData = JSON.parse(this.responseText);
+            nameError.innerHTML = (responseData.emptyName) ? responseData.emptyName : "";
+            telError.innerHTML = (responseData.emptyTel) ? responseData.emptyTel : "";
+            placeError.innerHTML = (responseData.emptyPlace) ? responseData.emptyPlace : "";
+            guestError.innerHTML = (responseData.emptyGuest) ? responseData.emptyGuest : "";
+            arrivalError.innerHTML = (responseData.arrivalTime) ? responseData.arrivalTime : "";
+            startError.innerHTML = (responseData.emptyStart) ? responseData.emptyStart : "";
+            endError.innerHTML = (responseData.emptyEnd) ? responseData.emptyEnd : "";    
+            
+            if (responseData.saved) {
+                document.getElementById('output').innerHTML = responseData.saved;
+            } else if (responseData.failed) {
+                document.getElementById('output').innerHTML = responseData.failed;   
+            } else {
+                document.getElementById('output').innerHTML = "";     
+            }
         }
     };
     xhr.send(formValues); 
