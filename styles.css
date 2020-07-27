@@ -35,10 +35,10 @@ textarea {
     border: 1px solid #c6ac1c;
     background: #ecd13f;
 }
-main {
+/* main {
     max-width: 1400px;
     margin: auto;
-}
+} */
 .flex-column {
     display: flex;
     flex-direction: column;
