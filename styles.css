@@ -134,9 +134,6 @@ textarea {
     font-size: 30px;
     color: coral;
 }
-#table {
-    display: none;
-}
 .progress-bar-container {
     position: relative;
     margin: 10px 0;
@@ -155,4 +152,15 @@ textarea {
 .error {
     color: red;
     font-size: 10px;
+}
+#output {
+    display: none;
+    height: 200px;
+    width: 400px;
+    background-color: white;
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

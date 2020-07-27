@@ -8,13 +8,16 @@
     <script src="https://kit.fontawesome.com/5db77d51c5.js" crossorigin="anonymous"></script>
     <title>Renginių planuotojas</title>
 </head>
-<body>
+<body id="body">
    <header>
         <h1>
             <i class="fab fa-forumbee"></i>&nbsp;
            <span class="heading">Dūzgės sodyba</span><br>
            <span>Renginio planuotojas</span>
         </h1>
+        <div id="output">
+            <span id="switchOff">X</span>
+        </div>
    </header>
    <main>
         <div class="form-title">
@@ -147,8 +150,8 @@
                 <th>Pastabos:</th>
             </tr>
         </table>
-       <script src="main.js"></script>
    </main>
-   <div id="output"></div> 
+   <script src="main.js"></script>
+   <script src="data.js"></script> 
 </body>
 </html>

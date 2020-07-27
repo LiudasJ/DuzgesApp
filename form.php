@@ -1,8 +1,5 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "uzsakymai";
+    include_once 'db_connection.php';
 
     $name;
     $tel;
@@ -43,27 +40,15 @@
         }
 
         if (empty($errors)) {
-            try {
-                $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-                // set the PDO error mode to exception
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $sql = "INSERT INTO info (Customer, TelNo, LivingPlace, EventType, GuestAmount, EventStart, EventEnd, Arrival, Notes, Food, Acco, BathTube)
-                VALUES ('$name', '$tel', '$place', '$event', '$amountOfGuests', '$eventStartDate', '$eventEndDate', '$timeOfArrival', '$notes', '$food', '$amountOfSleepingGuests', '$bathTube')";
-                // use exec() because no results are returned
-                $conn->exec($sql);
-                $success["saved"] = "Duomenys irasyti i duomenu baze.";
-                echo json_encode($success);
-                } catch(PDOException $e) {
-                $success["failed"] = "Duomenys nebuvo irasyti i duomenu baze! Bandykite dar karta.";
-                echo json_encode($success);
-                }
-                
-                $conn = null;
 
-        } else {
+            $sql = "INSERT INTO info (Customer, TelNo, LivingPlace, EventType, GuestAmount, EventStart, EventEnd, Arrival, Notes, Food, Acco, BathTube)
+            VALUES ('$name', '$tel', '$place', '$event', '$amountOfGuests', '$eventStartDate', '$eventEndDate', '$timeOfArrival', '$notes', '$food', '$amountOfSleepingGuests', '$bathTube')";
+            $conn->exec($sql);
+            $success["saved"] = "Duomenys irasyti i duomenu baze.";
+            echo json_encode($success);
+            $conn = null;
+            } else {
             echo json_encode($errors);
-        }
-
-
+            }
         }  
 ?>

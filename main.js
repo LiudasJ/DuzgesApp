@@ -166,12 +166,14 @@ saveFormButton.addEventListener('click', (e)=>{
             startError.innerHTML = (responseData.emptyStart) ? responseData.emptyStart : "";
             endError.innerHTML = (responseData.emptyEnd) ? responseData.emptyEnd : "";    
             
+            const output = document.getElementById('output');
+
             if (responseData.saved) {
-                document.getElementById('output').innerHTML = responseData.saved;
+                output.innerHTML = responseData.saved;
             } else if (responseData.failed) {
-                document.getElementById('output').innerHTML = responseData.failed;   
+                output.innerHTML = responseData.failed;   
             } else {
-                document.getElementById('output').innerHTML = "";     
+                output.innerHTML = "";     
             }
         }
     };
