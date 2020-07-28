@@ -15,15 +15,16 @@
            <span class="heading">Dūzgės sodyba</span><br>
            <span>Renginio planuotojas</span>
         </h1>
-        <div id="output">
-            <span id="switchOff">X</span>
-        </div>
    </header>
    <main>
         <div class="form-title">
             <p>Užpildykite organizuojamos šventės žurnalą</p>
         </div>
        <form id="form" method="POST">
+           <div id="output-container">
+               <span id="closeOutputContainer">&#10006;</span>
+               <p id="output"></p>
+           </div>
            <div class="left-form-side">
                 <h2>Pagrindinė informacija:</h2>
                 <div class="form-element">
@@ -137,6 +138,12 @@
                 <input type="submit" name="submit" id="save" class="btn btn-save" value="Išsaugoti">
             </div>
        </form>
+       <h2>Renginių įrašai</h2>
+       <div class="search-container">
+            <span>Paieškos žodis: </span>
+           <input type="text" id="searchTerm">
+           <i id="search-icon" class="fas fa-search"></i>
+       </div>
        <table id="table">
             <tr>
                 <th>Klientas:</th>

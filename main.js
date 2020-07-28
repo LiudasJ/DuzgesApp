@@ -12,6 +12,9 @@ const foodInput = document.getElementsByClassName('food-input');
 const amountOfSleepingGuests = document.getElementById('sleep');
 const guestArrival = document.getElementById('arrival');
 const notes = document.getElementById('notes');
+const outputContainer = document.getElementById('output-container');
+const output = document.getElementById('output');
+const myForm = document.getElementById('form');
 var   food, acco, bathtube;
 var accoDiv = document.getElementsByClassName('accoDiv');
 
@@ -152,7 +155,6 @@ const endError = document.getElementById('endError');
 saveFormButton.addEventListener('click', (e)=>{
     e.preventDefault();
     const xhr = new XMLHttpRequest();
-    var myForm = document.getElementById('form');
     var formValues = new FormData(myForm);
     xhr.open("POST", "form.php", true);
     xhr.onreadystatechange = function() {
@@ -165,11 +167,11 @@ saveFormButton.addEventListener('click', (e)=>{
             arrivalError.innerHTML = (responseData.arrivalTime) ? responseData.arrivalTime : "";
             startError.innerHTML = (responseData.emptyStart) ? responseData.emptyStart : "";
             endError.innerHTML = (responseData.emptyEnd) ? responseData.emptyEnd : "";    
-            
-            const output = document.getElementById('output');
 
             if (responseData.saved) {
+                outputContainer.style.visibility = 'visible';
                 output.innerHTML = responseData.saved;
+
             } else if (responseData.failed) {
                 output.innerHTML = responseData.failed;   
             } else {
@@ -180,4 +182,37 @@ saveFormButton.addEventListener('click', (e)=>{
     xhr.send(formValues); 
     }
 )
+
+function filterRecords () {
+    var input, filter, row, tdList, tdInnerText;
+    input = document.getElementById("searchTerm");
+    filter = input.value.toUpperCase();
+    row = table.getElementsByTagName("tr");
+    for (let i  = 0; i < row.length; i++) {
+        tdInnerText = '';
+        let indexi = i;
+        tdList = row[indexi].getElementsByTagName('td');
+        for (var j = 0; j < tdList.length; j++) {
+            tdInnerText += ` ${tdList[j].innerHTML}`;
+            if (tdInnerText.toUpperCase().indexOf(filter) > -1) {
+                row[indexi].style.display = ''; 
+            } else {
+                row[indexi].style.display = 'none';
+            }  
+        }
+    }
+}
+
+ var searchTerm = document.getElementById('searchTerm');
+
+ searchTerm.addEventListener('keyup', ()=>{
+     filterRecords();
+ })
+
+ const closeButton = document.getElementById('closeOutputContainer');
+
+ closeButton.addEventListener('click', () => {
+    outputContainer.style.visibility = 'hidden';
+    myForm.reset();
+ })
   

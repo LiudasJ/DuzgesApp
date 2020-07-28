@@ -19,6 +19,5 @@
                 "<td>" . $row['BathTube'] . "</td>" .
             "</tr>";
     }
-
     $conn = null;
 ?>
