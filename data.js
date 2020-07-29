@@ -3,7 +3,7 @@ window.onload = () => {
     xhr.open("GET", "fetchData.php", true);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById('table').innerHTML += xhr.responseText;
+            document.getElementById('records-container').innerHTML = xhr.responseText;
         }
     }
     xhr.send();

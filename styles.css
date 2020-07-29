@@ -5,6 +5,14 @@ body {
     font-family: 'Krona One', sans-serif;
     width: 90%;
     margin: 20px auto;
+    max-width: 1400px;
+}
+input, select {
+    border-radius: 5px;
+    padding: 5px;
+}
+select {
+    border: 2px solid coral;
 }
 th, td {
     padding: 10px;
@@ -26,6 +34,7 @@ textarea {
     width: 100px;
     color: white;
     text-transform: uppercase;
+    border-radius: 5px;
 }
 .btn-save {
     border: 1px solid green;
@@ -35,10 +44,6 @@ textarea {
     border: 1px solid #c6ac1c;
     background: #ecd13f;
 }
-/* main {
-    max-width: 1400px;
-    margin: auto;
-} */
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -67,24 +72,29 @@ header {
     color: coral;
 }
 form {
+    height: 800px;
     display: flex;
-    max-width: 1400px;
-    margin: auto;
     position: relative;
+    padding: 10px;
 }
 .left-form-side {
     width: 70%;
     margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .right-form-side {
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 .form-element {
     height: auto;
     padding: 20px;
     border: 1px solid grey;
     border-radius: 10px;
-    margin: 10px 0;
     transition: all 2s;
     justify-content: space-between;
 }
@@ -141,7 +151,7 @@ textarea {
     position: relative;
     margin: 10px 0;
     height: 10px;
-    background-color: red;
+    background-color: coral;
     border-radius: 5px;
 }
 .progress-bar {
@@ -196,5 +206,36 @@ textarea {
 #search-icon {
     position: absolute;
     right: 5px;
-    top: 30px;
+    top: 35px;
+}
+#records-container {
+    margin-top: 30px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.record {
+    height: auto;
+    margin: 10px;
+    width: 30%;
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #f1f1f1;
+}
+.record ul {
+    list-style: none;
+}
+.record ul li {
+    margin-bottom: 10px;
+}
+.fas, .far {
+    font-size: 16px;
+    color: coral;
+}
+.record-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

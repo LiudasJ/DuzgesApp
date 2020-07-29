@@ -184,20 +184,20 @@ saveFormButton.addEventListener('click', (e)=>{
 )
 
 function filterRecords () {
-    var input, filter, row, tdList, tdInnerText;
+    var input, filter, record, recordList, tdInnerText;
     input = document.getElementById("searchTerm");
     filter = input.value.toUpperCase();
-    row = table.getElementsByTagName("tr");
-    for (let i  = 0; i < row.length; i++) {
+    record = document.getElementsByClassName('record')
+    for (let i  = 0; i < record.length; i++) {
+        recordList = record[i].getElementsByTagName('li');
         tdInnerText = '';
         let indexi = i;
-        tdList = row[indexi].getElementsByTagName('td');
-        for (var j = 0; j < tdList.length; j++) {
-            tdInnerText += ` ${tdList[j].innerHTML}`;
+        for (var j = 0; j < recordList.length; j++) {
+            tdInnerText += ` ${recordList[j].innerHTML}`;
             if (tdInnerText.toUpperCase().indexOf(filter) > -1) {
-                row[indexi].style.display = ''; 
+                record[indexi].style.display = ''; 
             } else {
-                row[indexi].style.display = 'none';
+                record[indexi].style.display = 'none';
             }  
         }
     }
