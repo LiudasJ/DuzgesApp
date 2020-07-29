@@ -7,7 +7,7 @@ body {
     margin: 20px auto;
     max-width: 1400px;
 }
-input, select {
+input, select, textarea {
     border-radius: 5px;
     padding: 5px;
 }
@@ -30,15 +30,27 @@ textarea {
 }
 .btn {
     padding: 5px;
-    height: 35px;
+    height: 40px;
     width: 100px;
     color: white;
     text-transform: uppercase;
     border-radius: 5px;
+    cursor: pointer;
+    transition: .2s ease-in;
 }
 .btn-save {
+    width: 90%;
+    margin: 5px auto 0 auto;
     border: 1px solid green;
     background:#84c614;
+}
+.btn-update {
+    width: 90%;
+    margin: 5px auto 0 auto;
+    background: coral;
+}
+.btn-save:hover {
+    background: green;
 }
 .btn-edit {
     border: 1px solid #c6ac1c;
@@ -209,6 +221,9 @@ textarea {
     top: 35px;
 }
 #records-container {
+    height: 600px;
+    overflow-x: hidden;
+    overflow: scroll;
     margin-top: 30px;
     padding: 10px;
     display: flex;
