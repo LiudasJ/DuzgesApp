@@ -7,6 +7,11 @@ body {
     margin: 20px auto;
     max-width: 1400px;
 }
+a {
+    text-decoration: none;
+    margin-right: 2px;
+    font-size: 14px;
+}
 input, select, textarea {
     border-radius: 5px;
     padding: 5px;
@@ -29,8 +34,11 @@ textarea {
     display: block;
 }
 .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px;
-    height: 40px;
+    height: 30px;
     width: 100px;
     color: white;
     text-transform: uppercase;
@@ -44,17 +52,32 @@ textarea {
     border: 1px solid green;
     background:#84c614;
 }
-.btn-update {
-    width: 90%;
-    margin: 5px auto 0 auto;
-    background: coral;
-}
 .btn-save:hover {
     background: green;
 }
 .btn-edit {
     border: 1px solid #c6ac1c;
     background: #ecd13f;
+    margin-right: 5px;
+}
+.btn-delete {
+    border: 1px solid red;
+    background: #c90b04;
+}
+.btn-delete:hover {
+    background: #ed241c;
+}
+.btn-edit:hover {
+    background: #f7d931;
+}
+.btns-container {
+    height: 50px;
+    width: 220px;
+    padding: 5px;
+    display: flex;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
 }
 .flex-column {
     display: flex;
@@ -92,18 +115,14 @@ form {
 .left-form-side {
     width: 70%;
     margin-right: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
 }
 .right-form-side {
+    height: auto;
     width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
 }
 .form-element {
     height: auto;
+    margin-bottom: 5px;
     padding: 20px;
     border: 1px solid grey;
     border-radius: 10px;
@@ -221,16 +240,16 @@ textarea {
     top: 35px;
 }
 #records-container {
-    height: 600px;
+    height: 550px;
     overflow-x: hidden;
     overflow: scroll;
     margin-top: 30px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 .record {
+    position: relative;
     height: auto;
     margin: 10px;
     width: 30%;
@@ -253,4 +272,8 @@ textarea {
     width: 20px;
     height: 20px;
     margin-right: 10px;
+}
+.form-update-container {
+    display: flex;
+    flex-direction: column;
 }

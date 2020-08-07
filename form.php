@@ -51,4 +51,11 @@
             echo json_encode($errors);
             }
         }  
+    
+        if (isset($_GET['delete'])) {
+            $id = $_GET['delete'];
+            $sql = "DELETE FROM info WHERE id=$id";
+            $conn->exec($sql);
+            header('Location: http://planuoju.lt/#records-container');    
+        }
 ?>
